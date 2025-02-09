@@ -41,13 +41,32 @@ describe('Rate Calculator Test', () => {
     // Click on the Calculate button
     cy.get('.justify-end > .no-underline')
       .should('contain', 'Calculate')
+      .scrollIntoView() // Ensure the button is in view
       .click({ force: true }); // Use force: true to bypass the covering element
 
     // Capture the screenshot of the Quote comparison
     cy.xpath('//*[@id="contentBody"]/div/app-static-layout/app-rate-calculator-v2/div/div[4]/div/div[1]/h1', { timeout: 10000 })
-      .scrollIntoView() // Ensure the element is in view
+      .should('be.visible')
       .wait(2000) // wait for 2 seconds
-    cy.screenshot('Your Quote', { capture: 'viewport' });
+    // Capture Express Mail Service (EMS) Quote
+    cy.get('.bg-white > .mx-auto > :nth-child(3)')
+      .should('be.visible')
+      .wait(2000) // wait for 2 seconds
+    // Capture International Air Parcel Quote
+    cy.xpath('//*[@id="contentBody"]/div/app-static-layout/app-rate-calculator-v2/div/div[4]/div/div[3]/dl/div[1]/div[1]/dd', { timeout: 10000 })
+      .should('be.visible')
+      .wait(2000) // wait for 2 seconds
+    cy.screenshot('EMS & International Air Parcel Quote', { capture: 'viewport' }); 
+    
+    
+    // Capture International Surface Parcel Quote
+    cy.get('.bg-white > .mx-auto > :nth-child(4)')
+      .scrollIntoView()
+      .should('be.visible')
+      .wait(2000) // wait for 2 seconds
+    cy.get(':nth-child(3) > .justify-start > .no-underline')
+      .scrollIntoView()
+    cy.screenshot('International Surface Parcel Quote', { capture: 'viewport' });
 
   });
 });

@@ -10,22 +10,19 @@ npm (Comes with Node.js)
 Cypress (Installed via npm)
 
 Installation
-1️⃣ Clone the Repository
+1. Clone the Repository
 git clone https://github.com/Rose-mawar/Q2-UI-CypressAutomation-POS-Malaysia.git
-cd pos-malaysia-shipping-calculator
 
 Install Dependencies
 npm install
-npm install xpath
 npm install -D cypress-xpath
 npx cypress open
-select browser type you want to test
+select the browser type you want to test
 
 Running Tests
-1️. Run All Tests in Headless Mode (Terminal)
+1. Run All Tests in Headless Mode (Terminal)
 npx cypress run
 2. Run Tests in Cypress UI Mode
 npx cypress open
 3. Run a Specific Test File
 npx cypress run --spec "cypress/e2e/posmalaysia.cy.js"
-
